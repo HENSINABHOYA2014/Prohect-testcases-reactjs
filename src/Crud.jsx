@@ -39,6 +39,7 @@ const Crud = () => {
                 return item;
             })
             setRecord(ans);
+            localStorage.setItem('crud', JSON.stringify(ans));
             setEditId("");
         } else {
 
@@ -53,7 +54,7 @@ const Crud = () => {
             }
             let data = [...record, obj];
             setRecord(data);
-            // localStorage.setItem('crud', JSON.stringify(data));
+            localStorage.setItem('crud', JSON.stringify(data));
             // alert("Record Succesfully Insert");
 
             setInput({
@@ -71,7 +72,7 @@ const Crud = () => {
             return item.id !== id;
         })
         setRecord(ans);
-        localStorage.setItem('Crud', JSON.stringify(ans));
+        localStorage.setItem('crud', JSON.stringify(ans));
         alert("Delete Succesfully");
     }
     const editData = (id) => {
@@ -96,7 +97,7 @@ const Crud = () => {
         <>
             <center>
                 <div className="modal-container">
-                    <div className="modal" id="modal">
+                    <div className="modal" id="modal" data-testid="modal">
                         <div className="modal-content">
                             <p>Logged in as :</p>
                             <p className="logged-user" id="logged-user">example@gmail.com</p>
@@ -105,29 +106,26 @@ const Crud = () => {
                     </div>
                 </div>
 
-                <div className="toast" id="toast">
+                <div className="toast" id="toast" data-testid="toast">
                     <i className="fas fa-exclamation-circle"></i>
                     <p className="toast-text">Oops, Wrong email or password!</p>
                     <i className="fas fa-close" id="close"></i>
                 </div>
 
                 <div className="container">
-
                     <form className="form" id="form">
                         <div className="form-control">
-                            <label for="name">Name</label>
+                            <label htmlFor="name">Name</label>
                             <input type="text" placeholder="Name" name="name" onChange={handleChange} value={input.name} />
                             <i className="fas fa-check-circle"></i>
                             <i className="fas fa-exclamation-circle"></i>
-
                         </div>
 
                         <div className="form-control">
-                            <label for="email">Email</label>
+                            <label htmlFor="email">Email</label>
                             <input type="text" placeholder="email@email.com" name="email" onChange={handleChange} value={input.email} />
                             <i className="fas fa-check-circle"></i>
                             <i className="fas fa-exclamation-circle"></i>
-
                         </div>
 
                         <div className="form-control">
@@ -135,11 +133,10 @@ const Crud = () => {
                             <input type="password" placeholder="Password" name="password" onChange={handleChange} value={input.phone} />
                             <i className="fas fa-check-circle"></i>
                             <i className="fas fa-exclamation-circle"></i>
-
                         </div>
 
                         <div className="form-control">
-                            <label for="email">City</label>
+                            <label for="city">City</label>
                             <input type="text" placeholder="City" name="city" onChange={handleChange} value={input.city} />
                             <i className="fas fa-check-circle"></i>
                             <i className="fas fa-exclamation-circle"></i>
@@ -147,7 +144,7 @@ const Crud = () => {
                         </div>
 
                         <div className="form-control">
-                            <label for="email">Salery</label>
+                            <label for="salery">Salery</label>
                             <input type="text" placeholder="Salery" name="salery" onChange={handleChange} value={input.salery} />
                             <i className="fas fa-check-circle"></i>
                             <i className="fas fa-exclamation-circle"></i>
